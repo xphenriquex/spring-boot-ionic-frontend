@@ -1,9 +1,10 @@
+import { ClienteService } from './../../app/services/domain/cliente.services';
 import { EstadoDTO } from './../../models/estado.dto';
 import { EstadoService } from './../../app/services/domain/estado.service';
 import { CidadeService } from './../../app/services/domain/cidade.service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CidadeDTO } from '../../models/cidade.dto';
 
 /**
@@ -29,7 +30,9 @@ export class SingupPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public cidadeService: CidadeService,
-    public estadoService: EstadoService) {
+    public estadoService: EstadoService,
+    public clienteService: ClienteService,
+    public alertController: AlertController) {
 
     this.formGroup = this.formBuilder.group({
       nome: ['Joaquim', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
@@ -62,7 +65,11 @@ export class SingupPage {
   }
 
   signupUser() {
-    console.log("enviou o form");
+    this.clienteService.insert(this.formGroup.value)
+      .subscribe(response => {
+        this.showInsertOk();
+      }, 
+      error => {});
   }
 
   updateCidades() {
@@ -72,6 +79,23 @@ export class SingupPage {
         this.cidades = Response;
         this.formGroup.controls.cidadeId.setValue(null);
       })
+  }
+
+  showInsertOk(){
+    let alert = this.alertController.create({
+      title: 'Sucesso!',
+      message: 'Cadastro efetuado com sucesso',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }
