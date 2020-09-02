@@ -1,7 +1,7 @@
 import { API_CONFIG } from './../../config/api.config';
-import { ClienteService } from './../../app/services/domain/cliente.services';
+import { ClienteService } from '../../services/domain/cliente.services';
 import { ClienteDTO } from './../../models/cliente.dto';
-import { StorageService } from './../../app/services/storage.service';
+import { StorageService } from '../../services/storage.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 

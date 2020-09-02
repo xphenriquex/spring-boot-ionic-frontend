@@ -1,7 +1,7 @@
-import { ClienteService } from './../../app/services/domain/cliente.services';
+import { ClienteService } from '../../services/domain/cliente.services';
 import { EstadoDTO } from './../../models/estado.dto';
-import { EstadoService } from './../../app/services/domain/estado.service';
-import { CidadeService } from './../../app/services/domain/cidade.service';
+import { EstadoService } from '../../services/domain/estado.service';
+import { CidadeService } from '../../services/domain/cidade.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

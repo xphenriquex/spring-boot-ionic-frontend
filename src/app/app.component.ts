@@ -1,4 +1,4 @@
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../services/auth.service';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
