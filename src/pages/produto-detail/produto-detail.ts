@@ -1,3 +1,4 @@
+import { CartService } from './../../services/domain/cart.service';
 import { ProdutoService } from './../../services/domain/produto.service';
 import { ProdutoDTO } from './../../models/produto.dtp';
 import { Component } from '@angular/core';
@@ -23,7 +24,8 @@ export class ProdutoDetailPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public produtoService: ProdutoService) {
+    public produtoService: ProdutoService,
+    public cartService: CartService) {
   }
 
   ionViewDidLoad() {
@@ -42,6 +44,11 @@ export class ProdutoDetailPage {
         this.item.imageUrl = `${API_CONFIG.bucketBaseUrl}/prod${this.item.id}.jpg`;
       },
       error => {});
+  }
+
+  addTocart(produto: ProdutoDTO){
+    this.cartService.addProduto(produto);
+    this.navCtrl.setRoot('CartPage');
   }
 
 }
