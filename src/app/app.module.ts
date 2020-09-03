@@ -1,3 +1,4 @@
+import { ProdutoService } from './../services/domain/produto.service';
 import { AuthInterceptorProvider } from './../interceptors/auth-interceptor';
 import { StorageService } from '../services/storage.service';
 import { AuthService } from '../services/auth.service';
@@ -36,7 +37,8 @@ import { ClienteService } from '../services/domain/cliente.services';
     ErrorInterceptorProvider,
     AuthService,
     StorageService,
-    ClienteService
+    ClienteService,
+    ProdutoService
   ]
 })
 export class AppModule {}
