@@ -4,13 +4,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
 
-/**
- * Generated class for the ProdutosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-produtos',
@@ -25,7 +18,7 @@ export class ProdutosPage {
     public loadingCtrl: LoadingController) {
   }
 
-  ionViewDidLoad() {
+  loadData(){
     let categoria_id = this.navParams.get('categoria_id');
     let loader = this.presentLoading();
     this.produtoService.findByCategoria(categoria_id)
@@ -37,6 +30,10 @@ export class ProdutosPage {
     error => {
       loader.dismiss();
     });
+  }
+
+  ionViewDidLoad() {
+    this.loadData();
   };
 
   loadImageUrls() {
@@ -61,5 +58,12 @@ export class ProdutosPage {
   
     loading.present();
     return loading;
+  }
+
+  doRefresh(event) {
+    this.loadData();
+    setTimeout(() => {
+      event.complete();
+    }, 1000);
   }
 }
