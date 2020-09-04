@@ -30,7 +30,8 @@ export class PaymentPage {
       });
   }
 
-  nextPage(){
+  nextPage(e){
+    e.preventDefault();
     this.pedido.pagamento = this.formGroup.value;
     console.log(this.pedido)
   }

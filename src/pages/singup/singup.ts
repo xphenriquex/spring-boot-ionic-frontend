@@ -64,7 +64,8 @@ export class SingupPage {
 
   }
 
-  signupUser() {
+  signupUser(e) {
+    e.preventDefault();
     this.clienteService.insert(this.formGroup.value)
       .subscribe(response => {
         this.showInsertOk();
