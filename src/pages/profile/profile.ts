@@ -5,12 +5,7 @@ import { StorageService } from '../../services/storage.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+//Criar função de camera usando capacitor ao invés de cordova
 
 @IonicPage()
 @Component({
